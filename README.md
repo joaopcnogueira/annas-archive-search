@@ -20,11 +20,23 @@ A lightweight Chrome extension that lets you search for books, papers, and docum
 
 ### Manual Installation
 
-1. Download or clone this repository
+#### Option 1: Download from Release (Recommended)
+
+1. Go to the [Releases page](https://github.com/joaopcnogueira/annas-archive-search/releases)
+2. Download `annas-archive-extension-v1.0.zip` from the latest release
+3. Extract the ZIP file
+4. Open Chrome and go to `chrome://extensions/`
+5. Enable **Developer mode** (top right corner)
+6. Click **Load unpacked**
+7. Select the extracted folder
+
+#### Option 2: Clone the Repository
+
+1. Clone this repository: `git clone https://github.com/joaopcnogueira/annas-archive-search.git`
 2. Open Chrome and go to `chrome://extensions/`
 3. Enable **Developer mode** (top right corner)
 4. Click **Load unpacked**
-5. Select the repository folder
+5. Select the cloned folder
 
 ## Usage
 
