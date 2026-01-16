@@ -51,6 +51,18 @@ annas/
 └── assets/            # Source files for images
 ```
 
+## Privacy Policy
+
+**Search on Anna's Archive** respects your privacy:
+
+- **No data collection** - This extension does not collect, store, or transmit any personal data
+- **No tracking** - No analytics, cookies, or tracking of any kind
+- **No external servers** - All functionality runs locally in your browser
+- **Minimal permissions** - Only requests the `contextMenus` permission required for core functionality
+- **Open source** - The complete source code is available for review
+
+The extension only reads the text you select when you explicitly right-click and choose "Search on Anna's Archive". This text is sent directly to Anna's Archive search URL and is not stored or processed by the extension.
+
 ## License
 
 MIT License - feel free to use, modify, and distribute.
