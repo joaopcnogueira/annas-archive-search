@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Search on Anna's Archive",
+  "version": "1.0",
+  "description": "Search selected text on Anna's Archive",
+  "permissions": ["contextMenus"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

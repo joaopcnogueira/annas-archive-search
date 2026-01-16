@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1280px;
+      height: 800px;
+      background: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      position: relative;
+    }
+
+    /* Browser mockup */
+    .browser {
+      width: 1000px;
+      height: 600px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      position: absolute;
+      top: 100px;
+      left: 140px;
+      overflow: hidden;
+    }
+
+    .browser-header {
+      height: 40px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #28ca41; }
+
+    .url-bar {
+      flex: 1;
+      height: 24px;
+      background: white;
+      border-radius: 4px;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .browser-content {
+      padding: 40px;
+      position: relative;
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .book-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .book-item {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .book-cover {
+      width: 60px;
+      height: 80px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+    }
+
+    .book-cover.selected {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .book-info {
+      flex: 1;
+    }
+
+    .book-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .book-title.selected {
+      background: #3390ff;
+      color: white;
+      display: inline;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+
+    .book-author {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Context menu */
+    .context-menu {
+      position: absolute;
+      top: 195px;
+      left: 280px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      padding: 6px 0;
+      min-width: 220px;
+      z-index: 100;
+    }
+
+    .menu-item {
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .menu-item.highlight {
+      background: #e8f0fe;
+      color: #1a73e8;
+      font-weight: 500;
+    }
+
+    .menu-item .icon {
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial Black;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .menu-item.highlight .icon {
+      background: black;
+      color: white;
+      border-color: black;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 6px 0;
+    }
+
+    /* Arrow indicator */
+    .arrow {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .arrow-text {
+      background: #1a73e8;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .arrow-line {
+      width: 2px;
+      height: 60px;
+      background: #1a73e8;
+    }
+
+    .arrow-point {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 12px solid #1a73e8;
+    }
+  </style>
+</head>
+<body>
+  <div class="browser">
+    <div class="browser-header">
+      <div class="dot red"></div>
+      <div class="dot yellow"></div>
+      <div class="dot green"></div>
+      <div class="url-bar">goodreads.com/list/best-books-2024</div>
+    </div>
+    <div class="browser-content">
+      <div class="page-title">Best Books of 2024</div>
+      <div class="book-list">
+        <div class="book-item">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <div class="book-title">The Art of Programming</div>
+            <div class="book-author">by John Smith</div>
+          </div>
+        </div>
+        <div class="book-item">
+          <div class="book-cover selected"></div>
+          <div class="book-info">
+            <div class="book-title selected">Clean Code</div>
+            <div class="book-author">by Robert C. Martin</div>
+          </div>
+        </div>
+        <div class="book-item">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <div class="book-title">Design Patterns</div>
+            <div class="book-author">by Gang of Four</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Context Menu -->
+      <div class="context-menu">
+        <div class="menu-item">Copy</div>
+        <div class="menu-item">Search Google for "Clean Code"</div>
+        <div class="menu-divider"></div>
+        <div class="menu-item highlight">
+          <span class="icon">A</span>
+          Search on Anna's Archive
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">
+    <div class="arrow-text">Right-click selected text</div>
+    <div class="arrow-line"></div>
+    <div class="arrow-point"></div>
+  </div>
+</body>
+</html>

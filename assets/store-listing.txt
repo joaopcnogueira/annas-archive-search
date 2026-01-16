@@ -1,0 +1,34 @@
+============================================
+CHROME WEB STORE LISTING
+============================================
+
+NAME:
+Search on Anna's Archive
+
+SHORT DESCRIPTION (132 characters max):
+Quickly search any selected text on Anna's Archive. Right-click any book title or text to find it instantly.
+
+DETAILED DESCRIPTION:
+Search on Anna's Archive is a lightweight extension that lets you search for books, papers, and documents on Anna's Archive directly from any webpage.
+
+How to use:
+1. Select any text on a webpage (book title, author name, ISBN, etc.)
+2. Right-click to open the context menu
+3. Click "Search on Anna's Archive"
+4. A new tab opens with your search results
+
+Features:
+• Fast and simple - just two clicks
+• Works on any webpage
+• Lightweight - no background processes
+• Privacy-focused - no data collection
+• Open source
+
+Perfect for students, researchers, and book lovers who want quick access to Anna's Archive search.
+
+============================================
+CATEGORY SUGGESTION:
+Productivity
+
+TAGS (if available):
+books, search, archive, library, research, reading

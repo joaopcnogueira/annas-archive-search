@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1400px;
+      height: 560px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background decorations */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .bg-circle.c1 { width: 400px; height: 400px; top: -100px; right: -100px; }
+    .bg-circle.c2 { width: 300px; height: 300px; bottom: -50px; left: -50px; }
+    .bg-circle.c3 { width: 200px; height: 200px; top: 50%; left: 30%; }
+
+    .content {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      z-index: 1;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial Black, Arial, sans-serif;
+      font-size: 90px;
+      font-weight: 900;
+      color: black;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+
+    .title {
+      color: white;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,0.7);
+      font-size: 20px;
+      max-width: 400px;
+      line-height: 1.4;
+    }
+
+    /* Browser mockup */
+    .browser {
+      width: 550px;
+      height: 380px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    .browser-header {
+      height: 36px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #28ca41; }
+
+    .browser-content {
+      padding: 25px;
+      position: relative;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .book-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      background: #fafafa;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .book-cover {
+      width: 40px;
+      height: 55px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      border-radius: 4px;
+    }
+
+    .book-info { flex: 1; }
+
+    .book-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .book-title.selected {
+      background: #3390ff;
+      color: white;
+      display: inline;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+
+    .book-author {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Context menu */
+    .context-menu {
+      position: absolute;
+      top: 115px;
+      left: 180px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      padding: 5px 0;
+      min-width: 200px;
+    }
+
+    .menu-item {
+      padding: 7px 14px;
+      font-size: 12px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .menu-item.highlight {
+      background: #e8f0fe;
+      color: #1a73e8;
+      font-weight: 500;
+    }
+
+    .menu-item .icon {
+      width: 14px;
+      height: 14px;
+      background: black;
+      color: white;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial Black;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 4px 0;
+    }
+
+    /* Features */
+    .features {
+      position: absolute;
+      bottom: 40px;
+      left: 100px;
+      display: flex;
+      gap: 40px;
+    }
+
+    .feature {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-dot {
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-circle c1"></div>
+  <div class="bg-circle c2"></div>
+  <div class="bg-circle c3"></div>
+
+  <div class="content">
+    <div class="left">
+      <div class="logo">A</div>
+      <div class="title">Search on Anna's Archive</div>
+      <div class="subtitle">Find books, papers, and documents instantly from any webpage with just a right-click.</div>
+    </div>
+
+    <div class="browser">
+      <div class="browser-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <div class="browser-content">
+        <div class="page-title">Recommended Books</div>
+        <div class="book-item">
+          <div class="book-cover"></div>
+          <div class="book-info">
+            <div class="book-title selected">Clean Code</div>
+            <div class="book-author">by Robert C. Martin</div>
+          </div>
+        </div>
+
+        <div class="context-menu">
+          <div class="menu-item">Copy</div>
+          <div class="menu-item">Search Google</div>
+          <div class="menu-divider"></div>
+          <div class="menu-item highlight">
+            <span class="icon">A</span>
+            Search on Anna's Archive
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature"><span class="feature-dot"></span> Lightweight</div>
+    <div class="feature"><span class="feature-dot"></span> Privacy-focused</div>
+    <div class="feature"><span class="feature-dot"></span> Open source</div>
+  </div>
+</body>
+</html>
